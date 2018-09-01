@@ -1,11 +1,11 @@
 <?php 
-function imgmaker($width=1224,$height=816){
+function imgmaker($src,$width,$height){
     $image = imagecreatetruecolor($width,$height);
 	$bgColor = imagecolorallocate($image, 100, 135, 120);
 	imagefill($image,0,0,$bgColor);
 	imagealphablending($image,true);
 	imagesavealpha($image,true);
-	$srcImage = imagecreatefromjpeg('vespa.jpg');	
+	$srcImage = imagecreatefromjpeg($src);	
 	imagesavealpha($srcImage,true);
 	imagecopy($image, $srcImage, 100,100, 0, 0,1024,616);
 	imagedestroy($srcImage);
@@ -17,4 +17,4 @@ function imgmaker($width=1224,$height=816){
 	imagedestroy($image);	
 	die;
 }
-imgmaker();
+imgmaker('vespa.jpg',1224,816);
